@@ -1,0 +1,26 @@
+- job:
+    name: terraform-cicd
+    project-type: pipeline
+    description: 'terraform provisioner'
+    dispaly-name: 'terraform-cicd'
+    concurrent: true
+    scm:
+      - git:
+          url: https://github.com/Shakeeljaveed/s3-sns-sqs-terraform-code.git
+          branches:
+            - origin/master
+          browser: githubweb
+          browser-url: https://github.com/Shakeeljaveed/s3-sns-sqs-terraform-code.git
+          timeout: 20
+    pipeline-scm:
+      scm:
+        - git:
+            url: https://github.com/Shakeeljaveed/s3-sns-sqs-terraform-code.git
+            branches:
+              - origin/master
+            browser: githubweb
+            browser-url: https://github.com/Shakeeljaveed/s3-sns-sqs-terraform-code.git
+            timeout: 20
+            credentials-id: <my-credentials file>
+      script-path: Jenkinsfile
+      lightweight-checkout: true
